@@ -1,0 +1,84 @@
+/* Variáveis para consistência (opcional, mas recomendado para temas) */
+:root {
+  --ion-color-primary: #3498db; /* Azul moderno */
+  --ion-color-secondary: #2ecc71; /* Verde para ações de sucesso */
+  --ion-color-light: #ecf0f1; /* Fundo claro */
+  --ion-color-dark: #2c3e50; /* Texto escuro */
+}
+
+/* 1. Header (Cabeçalho) */
+ion-header {
+  ion-toolbar {
+    /* Fundo suavemente colorido ou com gradiente */
+    --background: var(--ion-color-primary);
+    --color: #ffffff; /* Cor do texto/título */
+
+    ion-title {
+      font-weight: 700; /* Título mais forte */
+      font-size: 1.3em;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+/* 2. Lista de Itens (Contatos) */
+ion-content {
+  /* Fundo da tela para dar destaque à lista */
+  --background: var(--ion-color-light);
+}
+
+ion-list {
+  background: transparent; /* Remove o fundo padrão da lista */
+  padding: 10px; /* Adiciona um respiro em volta da lista */
+}
+
+ion-item-sliding {
+  margin-bottom: 12px; /* Espaçamento entre os cartões dos contatos */
+  border-radius: 12px; /* Cantos arredondados para um visual de cartão */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+  transition: transform 0.2s ease-in-out; /* Efeito hover/foco suave */
+
+  &:hover {
+    transform: translateY(-2px); /* Eleva um pouco no hover (bom para web/desktop) */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra um pouco maior */
+  }
+}
+
+ion-item {
+  /* Estilo interno do item/cartão */
+  --background: #ffffff; /* Fundo branco para contraste */
+  --inner-padding-end: 0px; /* Remove padding interno extra */
+  --padding-start: 15px;
+  --detail-icon-opacity: 0; /* Remove a seta de detalhe padrão, se houver */
+
+  /* Estilo do nome do contato */
+  font-size: 1.1em;
+  font-weight: 500;
+  color: var(--ion-color-dark);
+}
+
+/* 3. Opções de Ação (Arrastar) */
+ion-item-options {
+  /* Alinha as opções de arrastar com o visual arredondado do item */
+  border-radius: 12px;
+  overflow: hidden; /* Garante que os cantos arredondados fiquem visíveis */
+}
+
+ion-item-option {
+  --background: var(--ion-color-secondary); /* Cor de destaque para a ação */
+  color: white;
+
+  ion-icon {
+    font-size: 1.5em;
+  }
+}
+
+/* 4. Botão Flutuante (FAB) de Adicionar */
+ion-fab-button {
+  --background: var(--ion-color-primary); /* Usa a cor primária */
+  --box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra mais destacada para o FAB */
+
+  ion-icon {
+    font-size: 2em; /* Ícone de '+' maior */
+  }
+}

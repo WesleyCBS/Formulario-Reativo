@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" style="color: white"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item class="toggle-card">
+    <ion-label>Habilitar Edição</ion-label>
+    <ion-toggle color="success" (ionChange)="alterarEdicao()"></ion-toggle>
+  </ion-item>
+
+  <form [formGroup]="formCadastrar">
+    <ion-list>
+
+      <ion-item lines="none">
+        <ion-input placeholder="Nome" formControlName="nome" [disabled]="editar"></ion-input>
+      </ion-item>
+      @if (formCadastrar.get('nome')?.touched || formCadastrar.get('nome')?.dirty) {
+        @if (formCadastrar.get('nome')?.errors) {
+          <ion-note color="danger" class="validation-error-message">
+            @if (formCadastrar.get('nome')?.hasError('required')) {
+              <span>Nome é obrigatório.</span>
+            }
+            @if (formCadastrar.get('nome')?.hasError('minlength')) {
+              <span>É preciso inserir o nome completo.</span>
+            }
+          </ion-note>
+        }
+      }
+
+      <ion-item lines="none">
+        <ion-input placeholder="Telefone" type="tel" formControlName="telefone" [disabled]="editar"></ion-input>
+      </ion-item>
+      @if (formCadastrar.get('telefone')?.touched || formCadastrar.get('telefone')?.dirty) {
+        @if (formCadastrar.get('telefone')?.errors) {
+          <ion-note color="danger" class="validation-error-message">
+            @if (formCadastrar.get('telefone')?.hasError('required')) {
+              <span>Telefone é obrigatório.</span>
+            }
+            @if (formCadastrar.get('telefone')?.hasError('minlength')) {
+              <span>Telefone deve ter no mínimo 10 caracteres.</span>
+            }
+          </ion-note>
+        }
+      }
+
+      <ion-item lines="none">
+        <ion-select placeholder="Gênero" formControlName="genero" [disabled]="editar">
+          <ion-select-option value="Não Declarar">Não Declarar</ion-select-option>
+          <ion-select-option value="Feminino">Feminino</ion-select-option>
+          <ion-select-option value="Masculino">Masculino</ion-select-option>
+        </ion-select>
+      </ion-item>
+      @if (formCadastrar.get('genero')?.touched || formCadastrar.get('genero')?.dirty) {
+        @if (formCadastrar.get('genero')?.hasError('required')) {
+          <ion-note color="danger" class="validation-error-message">
+            <span>Gênero é obrigatório.</span>
+          </ion-note>
+        }
+      }
+
+      <ion-item lines="none">
+        <ion-input placeholder="Email" type="email" formControlName="email" [disabled]="editar"></ion-input>
+      </ion-item>
+      @if (formCadastrar.get('email')?.touched || formCadastrar.get('email')?.dirty) {
+        @if (formCadastrar.get('email')?.errors) {
+          <ion-note color="danger" class="validation-error-message">
+            @if (formCadastrar.get('email')?.hasError('required')) {
+              <span>Email é obrigatório.</span>
+            }
+            @if (formCadastrar.get('email')?.hasError('email')) {
+              <span>Formato de email inválido.</span>
+            }
+          </ion-note>
+        }
+      }
+
+      <ion-button expand="block" (click)="excluir()" color="danger" [disabled]="editar">
+        Excluir
+      </ion-button>
+
+      <ion-button expand="block" (click)="salvar()" [disabled]="editar || formCadastrar.invalid">
+        Salvar
+      </ion-button>
+
+    </ion-list>
+  </form>
+</ion-content>
+

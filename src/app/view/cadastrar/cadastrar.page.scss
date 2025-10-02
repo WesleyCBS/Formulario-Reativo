@@ -1,0 +1,99 @@
+/* Cores e Variáveis (Consistência total) */
+:root {
+  --ion-color-primary: #3498db; /* Azul moderno */
+  --ion-color-secondary: #2ecc71; /* Verde para sucesso */
+  --ion-color-light: #ecf0f1; /* Fundo claro */
+  --ion-color-dark: #2c3e50; /* Texto escuro */
+}
+
+/* 1. Header (Cabeçalho) */
+ion-header {
+  ion-toolbar {
+    /* Estilo de header consistente */
+    --background: var(--ion-color-primary);
+    --color: #ffffff;
+
+    ion-title {
+      font-weight: 700;
+      font-size: 1.3em;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+/* 2. Conteúdo e Fundo */
+ion-content {
+  --background: var(--ion-color-light);
+  padding: 20px 10px; /* Mais padding para respiro geral */
+}
+
+ion-list {
+  margin-top: 10px;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 30px; /* Espaço antes do botão de ação */
+}
+
+/* 3. Campos de Input (ion-item) */
+ion-item {
+  --background: #ffffff;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  /* Sombra sutil para destacar cada campo */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07);
+  transition: all 0.2s ease-in-out;
+
+  /* Efeito de foco mais visual: o campo "flutua" quando ativo */
+  &:focus-within {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    border: 1px solid var(--ion-color-primary); /* Borda primária no foco */
+  }
+
+  /* Estilo interno do campo */
+  ion-input, ion-select, ion-label {
+    --padding-start: 15px;
+    --padding-end: 15px;
+    font-size: 1.05em;
+    color: var(--ion-color-dark);
+    /* Placeholder mais escuro para melhor legibilidade */
+    &::placeholder {
+      color: #95a5a6;
+      font-weight: 400;
+    }
+  }
+}
+
+/* 4. Botão Principal (Cadastrar) */
+ion-button {
+  /* Usamos a cor secundária (verde) para sinalizar uma ação de 'sucesso'/'criação' */
+  --background: var(--ion-color-secondary);
+  --background-activated: #27ae60; /* Verde um pouco mais escuro ao clicar */
+
+
+  margin: 0 10px; /* Alinha com a margem dos cartões */
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1em;
+  height: 50px; /* Botão mais alto e fácil de tocar */
+  letter-spacing: 1px;
+
+  transition: transform 0.2s;
+
+  &:active {
+    transform: scale(0.98); /* Pequeno encolhimento ao tocar */
+  }
+}
+
+.validation-error-message {
+  /* Alinha a mensagem horizontalmente com o padding dos inputs */
+  padding: 5px 25px 5px 25px;
+  display: block; /* Ocupa a largura total */
+  font-size: 0.9em; /* Tamanho discreto */
+  font-weight: 500;
+  color: var(--ion-color-danger, #eb445a); /* Cor de erro padrão */
+
+  /* Ajuste vertical para ficar perto do input e dar espaço para o próximo item */
+  margin-top: -8px;
+  margin-bottom: 10px;
+}

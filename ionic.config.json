@@ -1,0 +1,7 @@
+{
+  "name": "apkAgenda",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,128 @@
+/* Cores e Variáveis (Consistência com a tela de lista) */
+:root {
+  --ion-color-primary: #3498db; /* Azul moderno */
+  --ion-color-secondary: #2ecc71; /* Verde para ações de sucesso */
+  --ion-color-light: #ecf0f1; /* Fundo claro */
+  --ion-color-dark: #2c3e50; /* Texto escuro */
+}
+
+/* 1. Header (Cabeçalho) */
+ion-header {
+  ion-toolbar {
+    /* Mesmo estilo de header para consistência */
+    --background: var(--ion-color-primary);
+    --color: #ffffff;
+
+    ion-title {
+      font-weight: 700;
+      font-size: 1.3em;
+      letter-spacing: 0.5px;
+    }
+
+    /* Garante que o botão de voltar fique com a cor branca */
+    ion-back-button {
+      --color: #ffffff;
+    }
+  }
+}
+
+/* 2. Conteúdo e Layout Principal */
+ion-content {
+  /* Mantém o fundo claro para dar destaque aos cartões/formulário */
+  --background: var(--ion-color-light);
+  padding: 10px; /* Adiciona respiro geral */
+}
+
+ion-list {
+  background: transparent;
+  padding: 0 10px; /* Ajuste para que a lista de inputs fique alinhada com o toggle-card */
+}
+
+/* 3. Toggle de Edição (Habilitar Edição) como Cartão de Controle */
+.toggle-card {
+  /* Estilo de cartão para o toggle */
+  width: 150px;
+  margin: 15px 10px 20px 200px; /* Mais margem inferior para separação dos campos */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  --background: #ffffff; /* Fundo branco para destacar */
+
+  /* Ajuste visual dentro do cartão */
+  --inner-padding-end: 15px;
+  --padding-start: 15px;
+
+  ion-label {
+    font-weight: 600;
+    color: var(--ion-color-dark);
+    font-size: 1.0em;
+  }
+
+  ion-toggle {
+    --handle-background-checked: var(--ion-color-secondary);
+    /* Mantém o toggle do lado direito e com bom alinhamento */
+    margin-inline-end: 0;
+  }
+}
+
+
+/* 4. Campos de Input (ion-input, ion-select, ion-datetime) */
+ion-list > ion-item {
+  /* Remove a borda padrão e aplica o estilo de cartão ao redor dos inputs */
+  --background: #ffffff;
+  margin-bottom: 10px;
+  border-radius: 8px; /* Cantos levemente arredondados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra mais discreta que a lista */
+  padding: 5px 0; /* Espaçamento interno */
+
+  /* Estilo quando o campo está desabilitado (modo visualização) */
+  &[disabled="true"] {
+    opacity: 1; /* Não queremos que fique cinza e ilegível */
+    ion-input, ion-select, ion-label, ion-datetime-button {
+      color: var(--ion-color-dark); /* Cor escura normal para leitura */
+      font-weight: 500;
+    }
+  }
+}
+
+/* Aprimoramento visual dos Inputs e Selects */
+ion-input, ion-select {
+  --padding-start: 15px;
+  --padding-end: 15px;
+  font-size: 1.05em;
+  color: var(--ion-color-dark);
+}
+
+/* 5. Botões de Ação (Salvar e Excluir) */
+ion-button {
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  /* Efeito suave de hover/clique */
+  &:hover:not([disabled]) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Estilo do botão Salvar */
+  &[color="primary"] {
+    --background: var(--ion-color-primary);
+  }
+
+  /* Estilo do botão Excluir */
+  &[color="danger"] {
+    --background: #e74c3c; /* Vermelho mais forte */
+  }
+
+  /* Botões Desabilitados */
+  &[disabled="true"] {
+    opacity: 0.6;
+    /* Remove a interação visual de clique */
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
