@@ -32,10 +32,10 @@ export class DetalharPage implements OnInit {
     }
 
     this.formCadastrar = this.fb.group({
-      nome: [this.contato?.nome || '', [Validators.required, Validators.minLength(5)]],
-      telefone: [this.contato?.telefone || '', [Validators.required, Validators.minLength(10)]],
-      genero: [this.contato?.genero || '', [Validators.required]],
-      email: [this.contato?.email || '', [Validators.required, Validators.email]]
+      nome: [this.contato?.nome, [Validators.required, Validators.minLength(5)]],
+      telefone: [this.contato?.telefone, [Validators.required, Validators.minLength(10)]],
+      genero: [this.contato?.genero, [Validators.required]],
+      email: [this.contato?.email, [Validators.required, Validators.email]]
     });
 
     if (this.editar) {
