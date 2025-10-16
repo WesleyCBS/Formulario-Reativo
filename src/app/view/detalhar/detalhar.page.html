@@ -79,6 +79,11 @@
         }
       }
 
+      <ion-item lines="none">
+        <ion-label>Tem WhatsApp?</ion-label>
+        <ion-checkbox slot="end" formControlName="temWhatsapp" [disabled]="editar"></ion-checkbox>
+      </ion-item>
+
       <ion-button expand="block" (click)="excluir()" color="danger" [disabled]="editar">
         Excluir
       </ion-button>

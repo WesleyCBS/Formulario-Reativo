@@ -35,7 +35,8 @@ export class DetalharPage implements OnInit {
       nome: [this.contato?.nome, [Validators.required, Validators.minLength(5)]],
       telefone: [this.contato?.telefone, [Validators.required, Validators.minLength(10)]],
       genero: [this.contato?.genero, [Validators.required]],
-      email: [this.contato?.email, [Validators.required, Validators.email]]
+      email: [this.contato?.email, [Validators.required, Validators.email]],
+      temWhatsapp: [this.contato?.temWhatsapp || false]
     });
 
     if (this.editar) {
@@ -58,9 +59,15 @@ export class DetalharPage implements OnInit {
       return;
     }
 
-    const { nome, telefone, genero, email } = this.formCadastrar.value;
+    const { nome, telefone, genero, email, temWhatsapp } = this.formCadastrar.value;
 
-    if (this.contatoService.update(this.contato, nome, telefone, genero, email)) {
+    this.contato.nome = nome;
+    this.contato.telefone = telefone;
+    this.contato.genero = genero;
+    this.contato.email = email;
+    this.contato.temWhatsapp = temWhatsapp;
+
+    if (this.contatoService.update(this.contato, nome, telefone, genero, email, temWhatsapp)) {
       this.presentAlert('Atualizar', 'Contato atualizado com sucesso');
       this.router.navigate(['/home']);
     } else {
@@ -109,4 +116,5 @@ export class DetalharPage implements OnInit {
     await alert.present();
   }
 }
+
 
