@@ -7,7 +7,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -17,5 +17,13 @@ export const routes: Routes = [
   {
     path: 'detalhar',
     loadComponent: () => import('./view/detalhar/detalhar.page').then( m => m.DetalharPage)
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./view/login/login.page').then( m => m.LoginPage)
+  },
+  {
+    path: 'registrar',
+    loadComponent: () => import('./view/registrar/registrar.page').then( m => m.RegistrarPage)
   },
 ];

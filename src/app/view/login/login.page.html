@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Logar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <form [formGroup]="formLogar" (ngSubmit)="submitForm()" novalidate>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      @if (emailControl.touched) {
+        @if (emailControl.hasError('required')) {
+          <span class="error-message">Email é Obrigatório.</span>
+        } @else if (emailControl.hasError('email')) {
+          <span class="error-message">Formato de Email inválido.</span>
+        }
+      }
+
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="senha"></ion-input>
+      </ion-item>
+
+      @if (senhaControl.touched) {
+        @if (senhaControl.hasError('required')) {
+          <span class="error-message">Senha é Obrigatória.</span>
+        } @else if (senhaControl.hasError('minlength')) {
+          <span class="error-message">A senha é de no mínimo 6 caracteres.</span>
+        }
+      }
+
+      <ion-button expand="block" type="submit" [disabled]="formLogar.invalid">
+        Entrar
+      </ion-button>
+    </form>
+
+    <a (click)="irParaSignUp()">Não tem Cadastro? Clique aqui!</a>
+  </ion-list>
+</ion-content>
+
